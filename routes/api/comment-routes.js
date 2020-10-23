@@ -1,8 +1,9 @@
 const router = require('express').Router();
+const sequelize = require('../../config/connection');
 const { Comment } = require('../../models');
 
 router.get('/', (req, res) => {
-
+    Comment.findAll().then(data => res.json(data));
 });
 
 router.post('/', (req, res) => {
@@ -19,7 +20,22 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-
+    Comment.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(data => {
+            if (!data) {
+                res.status(404).json({ message: 'No comment found with this id' });
+                return;
+            }
+            res.json(data);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 module.exports = router;
