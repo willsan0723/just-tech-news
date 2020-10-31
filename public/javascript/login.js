@@ -35,14 +35,15 @@ async function loginFormHandler(event) {
         const response = await fetch('/api/users/login', {
             method: 'post',
             body: JSON.stringify({
-                email,
-                password
+                'email': email,
+                'password': password
             }),
             headers: { 'Content-Type': 'application/json' }
         });
 
         if (response.ok) {
-            document.location.replace('/dashboard');
+            setTimeout(() => { document.location.replace('/dashboard') }, 200);
+            // document.location.replace('/dashboard')
         } else {
             alert(response.statusText);
         }
