@@ -43,7 +43,11 @@ async function loginFormHandler(event) {
 
         if (response.ok) {
             setTimeout(() => { document.location.replace('/dashboard') }, 200);
-            // document.location.replace('/dashboard')
+            // setTimeout(() => { alert("Session due to auto-logout in 5 minutes. Please save your work and restart your session. This timeout is set for an hour.") }, 3300000);
+            // // document.location.replace('/dashboard')
+            // setTimeout(() => { document.location.replace('/') }, 3600200);
+
+
         } else {
             alert(response.statusText);
         }
