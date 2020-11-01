@@ -32,7 +32,7 @@ setup();
 function startTimer() {
     // wait 6 seconds before calling goInactive
     timeoutID = window.setTimeout(goInactive, 3600000);
-    warningID = setTimeout(function () { console.log("You will be logged out in five minutes due to inactivity") }, 3300000)
+    warningID = setTimeout(function () { alert("You will be logged out in five minutes due to inactivity") }, 3300000)
 }
 
 function resetTimer(e) {
